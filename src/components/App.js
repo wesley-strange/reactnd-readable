@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 import * as ReadableAPI from '../utils/ReadableAPI'
 import '../styles/App.css';
+import { connect } from 'react-redux'
+import { handleInitialData } from '../actions/shared'
 
 class App extends Component {
   state = {
     categories: []
   }
 
-  updateCategories = () => {
-    ReadableAPI.getPosts()
-      .then((categories) => {
-        console.log(categories)
-        this.setState(() => ({
-          categories: Object.keys(categories)
-        }))
-      })
-  }
-
   componentDidMount() {
-    this.updateCategories()
+    this.props.dispatch(handleInitialData())
   }
 
   render () {
@@ -27,12 +19,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>App Component</h1>
-        {categories.map((category) => (
-          <h2>{category}</h2>
-        ))}
       </div>
     )
   }
 }
 
-export default App;
+export default connect()(App)
