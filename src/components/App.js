@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import * as ReadableAPI from './utils/ReadableAPI'
-import './App.css';
+import * as ReadableAPI from '../utils/ReadableAPI'
+import '../styles/App.css';
 
 class App extends Component {
   state = {
