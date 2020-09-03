@@ -8,8 +8,17 @@ export function handleInitialData () {
       ReadableAPI.getCategories(),
       ReadableAPI.getPosts()
     ]).then(([ categories, posts ]) => {
-      dispatch(receiveCategories(categories))
-      dispatch(receivePosts(posts))
+      const categoriesObj = {};
+      categories.forEach(cat => {
+        categoriesObj[cat.name] = cat;
+      })
+      dispatch(receiveCategories(categoriesObj))
+
+      const postsObj = {};
+      posts.forEach(post => {
+        postsObj[post.id] = post;
+      })
+      dispatch(receivePosts(postsObj))
     })
   }
 }

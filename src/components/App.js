@@ -3,6 +3,7 @@ import * as ReadableAPI from '../utils/ReadableAPI'
 import '../styles/App.css';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import Dashboard from './Dashboard'
 
 class App extends Component {
   state = {
@@ -18,7 +19,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>App Component</h1>
+        <Dashboard />
       </div>
     )
   }
