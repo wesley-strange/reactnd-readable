@@ -1,27 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PostList from './PostList'
 
 class Dashboard extends Component {
   render () {
     return (
       <div>
-        <h3 className='center'>Dashboard</h3>
-        <ul className='dashboard-list'>
-          {this.props.posts.map((post) => (
-            <li key={post.id}>
-              <div>POST ID: {post.id}</div>
-            </li>
-          ))}
-        </ul>
+        <h3 className='center'>Sort by wil go here...</h3>
+        <PostList />
       </div>
     )
   }
 }
 
-function mapStateToProps ({posts}) {
-  return {
-    posts: Object.values(posts)
-  }
-}
-
-export default connect(mapStateToProps)(Dashboard)
+export default connect()(Dashboard)
