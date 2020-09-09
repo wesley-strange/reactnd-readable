@@ -4,6 +4,7 @@ import '../styles/App.css';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
+import Details from './Details'
 
 class App extends Component {
   state = {

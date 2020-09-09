@@ -2,7 +2,7 @@ import * as ReadableAPI from '../utils/ReadableAPI'
 
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 
-function receiveComments (comments) {
+export function receiveComments (comments) {
   return {
     type: RECEIVE_COMMENTS,
     comments,

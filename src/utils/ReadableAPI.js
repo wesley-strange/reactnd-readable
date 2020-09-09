@@ -111,6 +111,14 @@ DELETE /posts/:id
     Sets the parentDeleted flag for all child comments to 'true'.
 */
 
+/*
+GET /comments
+  USAGE:
+    Get all of the comments available for the app.
+*/
+export const getComments = () =>
+  fetch(`${api}/comments`, { headers })
+    .then(res => res.json())
 
 /*
 GET /posts/:id/comments

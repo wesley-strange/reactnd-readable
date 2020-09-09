@@ -6,7 +6,7 @@ class Dashboard extends Component {
   render () {
     return (
       <div>
-        <h3 className='center'>Sort by wil go here...</h3>
+        <h3 className='center'>Sort by will go here...</h3>
         <PostList />
       </div>
     )
