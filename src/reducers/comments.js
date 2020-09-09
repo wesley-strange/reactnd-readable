@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENTS } from '../actions/comments'
+import { RECEIVE_COMMENTS, ADD_COMMENT } from '../actions/comments'
 
 export default function comments (state = {}, action) {
   switch (action.type) {
@@ -6,6 +6,13 @@ export default function comments (state = {}, action) {
       return {
         ...state,
         ...action.comments
+      }
+    case ADD_COMMENT :
+      const { comment } = action
+
+      return {
+        ...state,
+        [comment.id]: comment
       }
     default :
       return state

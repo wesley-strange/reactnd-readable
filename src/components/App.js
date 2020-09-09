@@ -20,7 +20,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Dashboard />
+        <Details id="8xf0y6ziyjabvozdd253nd" />
       </div>
     )
   }

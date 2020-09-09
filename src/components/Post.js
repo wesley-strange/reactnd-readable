@@ -6,9 +6,15 @@ class Post extends Component {
     const { post } = this.props
 
     return (
-      <li key={post.id}>
-        <div>POST ID: {post.id}</div>
-      </li>
+      post
+        ? (
+          <li key={post.id}>
+            <div>POST ID: {post.id}</div>
+          </li>
+        )
+        : (
+          <li>hi</li>
+        )
     )
   }
 }

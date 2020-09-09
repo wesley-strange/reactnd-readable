@@ -129,6 +129,23 @@ export const getCommentsId = (id) =>
   fetch(`${api}/posts/${id}/comments`, { headers })
     .then(res => res.json())
 
+function generateUID () {
+  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+}
+
+function formatComment (body, author, parentId) {
+  return {
+    id: generateUID(),
+    parentId,
+    timestamp: Date.now(),
+    body,
+    author,
+    voteScore: 1,
+    deleted: false,
+    parentDeleted: false
+  }
+}
+
 /*
 POST /comments
   USAGE:
@@ -141,15 +158,35 @@ POST /comments
     author: String
     parentId: Should match a post id in the database.
 */
-export const postComment = (comment) =>
-  fetch(`${api}/comments`, {
-    method: 'POST',
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ comment })
-  }).then(res => res.json())
+// export const postComment = (body, author, parentId) => {
+//   const formattedComment = formatComment(body, author, parentId)
+//
+//   fetch(`${api}/comments`, {
+//     method: 'POST',
+//     headers: {
+//       ...headers,
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ formattedComment })
+//   }).then(res => res.json())
+// }
+
+export const postComment = (body, author, parentId) => {
+  return new Promise((res, rej) => {
+    const formattedComment = formatComment(body, author, parentId)
+
+    fetch(`${api}/comments`, {
+      method: 'POST',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ formattedComment })
+    })
+
+    res(formattedComment)
+  })
+}
 
 /*
 GET /comments/:id
