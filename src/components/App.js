@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import Details from './Details'
+import CreateEditPost from './CreateEditPost'
 
 class App extends Component {
   state = {
@@ -20,7 +21,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Details id="8xf0y6ziyjabvozdd253nd" />
+        <CreateEditPost />
       </div>
     )
   }

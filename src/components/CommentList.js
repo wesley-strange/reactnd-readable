@@ -7,7 +7,7 @@ class CommentList extends Component {
     return (
       <ul className='dashboard-list'>
         {this.props.comments.map((comment) => (
-          <Comment id={comment.id} />
+          <Comment key={comment.id} id={comment.id} />
         ))}
       </ul>
     )

@@ -22,7 +22,6 @@ class NewComment extends Component {
 
     const { author, body } = this.state
     const { dispatch, pid } = this.props
-    const nid = '1'
 
     if (author !== '' && body !== '') {
       dispatch(handleNewComment(body, author, pid))

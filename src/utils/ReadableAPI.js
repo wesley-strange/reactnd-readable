@@ -38,6 +38,21 @@ export const getPosts = () =>
   fetch(`${api}/posts`, { headers })
     .then(res => res.json())
 
+
+function formatPost ({ title, body, author, category }) {
+  return {
+    id: generateUID(),
+    timestamp: Date.now(),
+    title,
+    body,
+    author,
+    category,
+    voteScore: 1,
+    deleted: false,
+    commentCount: 0
+  }
+}
+
 /*
 POST /posts
   USAGE:
@@ -50,15 +65,32 @@ POST /posts
     author - String
     category: Any of the categories listed in categories.js. Feel free to extend this list as you desire.
 */
-export const postPost = (post) =>
-  fetch(`${api}/posts`, {
-    method: 'POST',
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ post })
-  }).then(res => res.json())
+// export const postPost = (post) =>
+//   fetch(`${api}/posts`, {
+//     method: 'POST',
+//     headers: {
+//       ...headers,
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ post })
+//   }).then(res => res.json())
+
+export const postPost = (post) => {
+  return new Promise((res, rej) => {
+    const formattedPost = formatPost(post)
+
+    fetch(`${api}/posts`, {
+      method: 'POST',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ formattedPost })
+    })
+
+    res(formattedPost)
+  })
+}
 
 /*
 GET /posts/:id
