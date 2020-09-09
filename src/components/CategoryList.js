@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Post from './Post'
+import Category from './Category'
 
 class CategoryList extends Component {
   render () {
@@ -9,7 +10,7 @@ class CategoryList extends Component {
     return (
       <select name='categories' id='categories'>
         {categories.map((category) => (
-          <option value={category.name}>{category.name}</option>
+          <Category name={category.name} />
         ))}
       </select>
     )
