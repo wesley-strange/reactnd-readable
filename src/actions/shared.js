@@ -35,7 +35,7 @@ export function handleNewComment (body, author, parentId) {
   return (dispatch) => {
     return Promise.all([
       ReadableAPI.postComment(body, author, parentId)
-    ]).then((comment) => {
+    ]).then((comment, comments) => {
       dispatch(addComment(comment[0]))
       dispatch(incrementCounter(comment[0].parentId))
     })

@@ -190,22 +190,11 @@ POST /comments
     author: String
     parentId: Should match a post id in the database.
 */
-// export const postComment = (body, author, parentId) => {
-//   const formattedComment = formatComment(body, author, parentId)
-//
-//   fetch(`${api}/comments`, {
-//     method: 'POST',
-//     headers: {
-//       ...headers,
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ formattedComment })
-//   }).then(res => res.json())
-// }
 
 export const postComment = (body, author, parentId) => {
   return new Promise((res, rej) => {
     const formattedComment = formatComment(body, author, parentId)
+    console.log(formattedComment)
 
     fetch(`${api}/comments`, {
       method: 'POST',
@@ -255,14 +244,14 @@ PUT /comments/:id
     timestamp: timestamp. Get this however you want.
     body: String
 */
-export const putCommentId = (id, timestamp, body) =>
+export const updateComment = (id, timestamp, author, body) =>
   fetch(`${api}/comments/${id}`, {
     method: 'PUT',
     headers: {
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ timestamp, body })
+    body: JSON.stringify({ timestamp, author, body })
   }).then(res => res.json())
 
 /*
