@@ -126,14 +126,14 @@ PUT /posts/:id
     title - String
     body - String
 */
-export const putPostId = (id, category, username, title, body) =>
+export const updatePost = (id, category, username, title, body, timestamp) =>
   fetch(`${api}/posts/${id}`, {
     method: 'PUT',
     headers: {
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ category, username, title, body })
+    body: JSON.stringify({ category, username, title, body, timestamp })
   }).then(res => res.json())
 
 /*

@@ -51,8 +51,8 @@ class Comment extends Component {
         ? (
           edit
             ? (
-              <li onSubmit={this.handleSubmit}>
-                <form className='new-comment'>
+              <li>
+                <form className='new-comment' onSubmit={this.handleSubmit}>
                   <input
                     name='author'
                     type='text'
