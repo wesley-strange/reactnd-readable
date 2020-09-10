@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleNewComment } from '../actions/shared'
+import '../styles/NewComment.css';
 
 class NewComment extends Component {
   state = {
@@ -41,7 +42,7 @@ class NewComment extends Component {
 
     return (
       <form className='new-comment' onSubmit={this.handleSubmit}>
-        <div className='new-title'>Add new comment...</div>
+        <p className='new-label'>Commenting as</p>
         <input
           name='author'
           type='text'

@@ -15,10 +15,17 @@ class PostList extends Component {
   }
 }
 
-function mapStateToProps ({posts}) {
-  return {
-    posts: Object.values(posts).filter(post => post.deleted === false)
-  }
+function mapStateToProps ({posts}, {sortBy}) {
+  sortBy === 'Date'
+    ? (
+      posts = Object.values(posts).filter(post => post.deleted === false).sort((a, b) => b.timestamp - a.timestamp)
+    )
+    : (
+      posts = Object.values(posts).filter(post => post.deleted === false).sort((a, b) => b.voteScore - a.voteScore)
+    )
+    return {
+      posts
+    }
 }
 
 export default connect(mapStateToProps)(PostList)

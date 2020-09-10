@@ -1,0 +1,38 @@
+.new-comment {
+  display: grid;
+  width: 600px;
+  height: 125px;
+  grid-template-columns: 130px 160px 310px;
+  grid-template-rows: 30px 70px 25px;
+  grid-template-areas:
+    "alabel author none"
+    "comment comment comment"
+    "submit submit submit";
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.new-label {
+  grid-area: alabel;
+  margin: 0;
+  padding: 3px;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.new-author {
+  grid-area: author;
+  margin: 3px;
+}
+
+.new-body {
+  grid-area: comment;
+  margin: 5px 15px 5px 15px;
+  resize: none;
+}
+
+.new-submit {
+  grid-area: submit;
+  border-radius: 0 0 10px 10px;
+  cursor: pointer;
+}
