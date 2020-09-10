@@ -66,24 +66,25 @@ class Comment extends Component {
           edit
             ? (
               <div>
-                <form className='new-comment' onSubmit={this.handleSubmit}>
+                <form className='edit-comment' onSubmit={this.handleSubmit}>
+                  <p className='edit-label'>Commenting as</p>
                   <input
                     name='author'
                     type='text'
-                    className='new-author'
+                    className='edit-author'
                     placeholder='Enter username'
                     value={author}
                     onChange={this.handleChange}
                   />
                   <textarea
                     name='body'
-                    className='new-body'
+                    className='edit-body'
                     placeholder='Enter comment...'
                     value={body}
                     onChange={this.handleChange}
                   ></textarea>
                   <button
-                    className="new-submit"
+                    className="edit-submit"
                     type='submit'
                     align="center"
                   >

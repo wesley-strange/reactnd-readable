@@ -22,7 +22,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Details />
+        <CreateEditPost />
       </div>
     )
   }

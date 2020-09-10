@@ -11,6 +11,7 @@
     "comments comments details details edit delete";
   border: 1px solid black;
   border-radius: 10px;
+  background-color: var(--mint-cream-lighter);
 }
 
 .post-category {
@@ -67,11 +68,7 @@
 
 .link:hover {
   cursor: pointer;
-  color: orange;
-}
-
-.link:active {
-  color: darkorange;
+  color: var(--sandy-brown);
 }
 
 .vote {
@@ -96,14 +93,14 @@
 }
 
 .up {
-  background: #4BC35F;
+  background: var(--persian-green);
   height: 50%;
   margin-bottom: 0px;
   border-radius: 50px 50px 0 0;
 }
 
 .down {
-  background: #C15044;
+  background: var(--burnt-sienna);
   height: 50%;
   border-radius: 0 0 50px 50px;
 }
@@ -113,7 +110,7 @@
   top: 0;
   border-radius: 0;
   margin: 5px;
-  background: white;
+  background: var(--mint-cream-lighter);
   width: 50px;
   height: 50px;
   border-radius: 50px;
