@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, INCREMENT_COUNTER, ADD_POST, UPDATE_POST, UPVOTE_POST, DOWNVOTE_POST } from '../actions/posts'
+import { RECEIVE_POSTS, INCREMENT_COUNTER, ADD_POST, UPDATE_POST, UPVOTE_POST, DOWNVOTE_POST, DELETE_POST } from '../actions/posts'
 
 export default function posts (state = {}, action) {
   switch (action.type) {
@@ -51,6 +51,14 @@ export default function posts (state = {}, action) {
         [action.id]: {
           ...state[action.id],
           voteScore: state[action.id].voteScore - 1
+        }
+      }
+    case DELETE_POST :
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          deleted: true
         }
       }
     default :

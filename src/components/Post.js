@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleUpdatePost, handleVote } from '../actions/posts'
+import { handleUpdatePost, handleVote, handleDeletePost } from '../actions/posts'
 import '../styles/Post.css';
 
 class Post extends Component {
@@ -30,9 +30,14 @@ class Post extends Component {
   vote = (e) => {
     const { dispatch, post } = this.props
     const name = e.target.getAttribute('name')
-    console.log(name)
 
     dispatch(handleVote(post.id, name))
+  }
+
+  deletePost = () => {
+    const { dispatch, post } = this.props
+
+    dispatch(handleDeletePost(post.id))
   }
 
   handleSubmit = (e) => {
@@ -124,7 +129,7 @@ class Post extends Component {
               <div className='post-comments'>{post.commentCount} comments</div>
               <div className='post-details link'>View Details</div>
               <div className='post-edit link' onClick={this.editPost}>Edit Post</div>
-              <div className='post-delete link'>Delete Post</div>
+              <div className='post-delete link' onClick={this.deletePost}>Delete Post</div>
             </div>
           )
         )

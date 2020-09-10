@@ -17,7 +17,7 @@ class PostList extends Component {
 
 function mapStateToProps ({posts}) {
   return {
-    posts: Object.values(posts)
+    posts: Object.values(posts).filter(post => post.deleted === false)
   }
 }
 

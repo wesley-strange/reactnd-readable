@@ -6,6 +6,7 @@ export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
 export const UPVOTE_POST = 'UPVOTE_POST'
 export const DOWNVOTE_POST = 'DOWNVOTE_POST'
+export const DELETE_POST = 'DELETE_POST'
 
 export function receivePosts (posts) {
   return {
@@ -54,6 +55,13 @@ function updatePost (id, category, author, title, body, timestamp) {
   }
 }
 
+function deletePost (id) {
+  return {
+    type: DELETE_POST,
+    id
+  }
+}
+
 export function handleNewPost (title, body, author, category) {
   return (dispatch) => {
     return ReadableAPI.postPost({
@@ -87,6 +95,16 @@ export function handleVote (id, option) {
       option === 'upVote'
         ? dispatch(upVotePost(id))
         : dispatch(downVotePost(id))
+    })
+  }
+}
+
+export function handleDeletePost (id) {
+  return (dispatch) => {
+    return Promise.all([
+      ReadableAPI.deletePost(id)
+    ]).then(() => {
+      dispatch(deletePost(id))
     })
   }
 }

@@ -142,6 +142,15 @@ DELETE /posts/:id
     Sets the deleted flag for a post to 'true'.
     Sets the parentDeleted flag for all child comments to 'true'.
 */
+export const deletePost = (id) =>
+  fetch(`${api}/posts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id })
+  }).then(res => res.json())
 
 /*
 GET /comments
