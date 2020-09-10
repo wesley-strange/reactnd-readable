@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleUpdatePost } from '../actions/posts'
+import '../styles/Post.css';
 
 class Post extends Component {
   state = {
@@ -53,9 +54,9 @@ class Post extends Component {
         ? (
           edit
           ? (
-            <li key={post.id}>
+            <div key={post.id}>
               <form className='update-post' onSubmit={this.handleSubmit}>
-                <div className='update-post-title'>Update post</div>
+                <div className='update-post-category-label label'>Category</div>
                 <input
                   name='category'
                   type='text'
@@ -64,6 +65,7 @@ class Post extends Component {
                   value={category}
                   onChange={this.handleChange}
                 />
+                <div className='update-post-author-label label'>Author</div>
                 <input
                   name='author'
                   type='text'
@@ -72,6 +74,7 @@ class Post extends Component {
                   value={author}
                   onChange={this.handleChange}
                 />
+                <div className='update-post-title-label label'>Title</div>
                 <input
                   name='title'
                   type='text'
@@ -80,9 +83,10 @@ class Post extends Component {
                   value={title}
                   onChange={this.handleChange}
                 />
+                <div className='update-post-body-label label'>Comment</div>
                 <textarea
                   name='body'
-                  className='update-body'
+                  className='update-post-body'
                   placeholder='Enter post details...'
                   value={body}
                   onChange={this.handleChange}
@@ -95,16 +99,30 @@ class Post extends Component {
                   Update Post
                 </button>
               </form>
-            </li>
+            </div>
           )
           : (
-            <li key={post.id} onClick={this.handleOnClick}>
-              <div>POST ID: {post.id}</div>
-            </li>
+            <div className='post' key={post.id}>
+              <div className='post-category'>CAT: {post.category}</div>
+              <div className='post-author'>AUTHOR: {post.author}</div>
+              <div className='post-timestamp'>TIME: {post.timestamp}</div>
+              <div class="vote post-circle">
+                <div class="increment up"></div>
+                <div class="increment down"></div>
+
+                <div class="count">{post.voteScore}</div>
+              </div>
+              <div className='post-title'>TITLE: {post.title}</div>
+              <div className='post-body'>BODY: {post.body}</div>
+              <div className='post-comments'>{post.commentCount} comments</div>
+              <div className='post-details link'>View Details</div>
+              <div className='post-edit link' onClick={this.handleOnClick}>Edit Post</div>
+              <div className='post-delete link'>Delete Post</div>
+            </div>
           )
         )
         : (
-          <li></li>
+          <div></div>
         )
     )
   }

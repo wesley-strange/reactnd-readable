@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Post from './Post'
+import '../styles/PostList.css';
 
 class PostList extends Component {
   render () {
     return (
-      <ul className='dashboard-list'>
+      <div className='post-list'>
         {this.props.posts.map((post) => (
           <Post id={post.id} />
         ))}
-      </ul>
+      </div>
     )
   }
 }
