@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleUpdateComment } from '../actions/comments'
+import { handleUpdateComment, handleCommentVote, handleDeleteComment } from '../actions/comments'
+import '../styles/Comment.css';
 
 class Comment extends Component {
   state = {
     author: this.props.comment.author,
     body: this.props.comment.body,
     edit: false
-  }
-
-  handleOnClick = (e) => {
-    this.setState((prevState) => ({
-      edit: !prevState.edit
-    }))
   }
 
   handleChange = (e) => {
@@ -22,6 +17,25 @@ class Comment extends Component {
     this.setState(() => ({
       [name]: value
     }))
+  }
+
+  editComment = () => {
+    this.setState((prevState) => ({
+      edit: !prevState.edit
+    }))
+  }
+
+  vote = (e) => {
+    const { dispatch, comment } = this.props
+    const name = e.target.getAttribute('name')
+
+    dispatch(handleCommentVote(comment.id, name))
+  }
+
+  deleteComment = () => {
+    const { dispatch, comment } = this.props
+
+    dispatch(handleDeleteComment(comment.id))
   }
 
   handleSubmit = (e) => {
@@ -51,7 +65,7 @@ class Comment extends Component {
         ? (
           edit
             ? (
-              <li>
+              <div>
                 <form className='new-comment' onSubmit={this.handleSubmit}>
                   <input
                     name='author'
@@ -76,18 +90,24 @@ class Comment extends Component {
                     Update Comment
                   </button>
                 </form>
-              </li>
+              </div>
             )
             : (
-              <li key={comment.id} onClick={this.handleOnClick}>
-                <div>COMMENT ID: {comment.id}</div>
-                <div>USER: {comment.author}</div>
-                <div>BODY: {comment.body}</div>
-              </li>
+              <div key={comment.id} className='comment'>
+                <div className='comment-author'>by {comment.author} on {comment.timestamp}</div>
+                <div class="vote-comment comment-circle">
+                  <div name="upVote" className="increment up-comment" onClick={this.vote}></div>
+                  <div name="downVote" className="increment down-comment" onClick={this.vote}></div>
+                  <div className="count-comment">{comment.voteScore}</div>
+                </div>
+                <div className='comment-body'>{comment.body}</div>
+                <div className='comment-edit link' onClick={this.editComment}>Edit Comment</div>
+                <div className='comment-delete link' onClick={this.deleteComment}>Delete Comment</div>
+              </div>
             )
         )
         : (
-          <li></li>
+          <div></div>
         )
     )
   }

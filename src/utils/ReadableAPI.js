@@ -234,7 +234,7 @@ POST /comments/:id
   PARAMS:
     option - String: Either "upVote" or "downVote"
 */
-export const postCommentId = (id, option) =>
+export const voteComment = (id, option) =>
   fetch(`${api}/comments/${id}`, {
     method: 'POST',
     headers: {
@@ -268,3 +268,12 @@ DELETE /comments/:id
   USAGE:
     Sets a comment's deleted flag to 'true'
 */
+export const deleteComment = (id) =>
+  fetch(`${api}/comments/${id}`, {
+    method: 'DELETE',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id })
+  }).then(res => res.json())

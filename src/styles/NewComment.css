@@ -9,7 +9,7 @@
     "comment comment comment"
     "submit submit submit";
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 .new-label {
@@ -33,6 +33,6 @@
 
 .new-submit {
   grid-area: submit;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 4px 4px;
   cursor: pointer;
 }

@@ -1,0 +1,7 @@
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  /* grid-gap: 25px; */
+  /* justify-content: center; */
+  align-items: center;
+}

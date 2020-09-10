@@ -116,16 +116,16 @@ class Post extends Component {
           )
           : (
             <div className='post' key={post.id}>
-              <div className='post-category'>CAT: {post.category}</div>
-              <div className='post-author'>AUTHOR: {post.author}</div>
-              <div className='post-timestamp'>TIME: {post.timestamp}</div>
+              <div className='post-category'>{post.category}</div>
+              <div className='post-author'>{post.author}</div>
+              <div className='post-timestamp'>{post.timestamp}</div>
               <div class="vote post-circle">
                 <div name="upVote" className="increment up" onClick={this.vote}></div>
                 <div name="downVote" className="increment down" onClick={this.vote}></div>
                 <div className="count">{post.voteScore}</div>
               </div>
-              <div className='post-title'>TITLE: {post.title}</div>
-              <div className='post-body'>BODY: {post.body}</div>
+              <div className='post-title'>{post.title}</div>
+              <div className='post-body'>{post.body}</div>
               <div className='post-comments'>{post.commentCount} comments</div>
               <div className='post-details link'>View Details</div>
               <div className='post-edit link' onClick={this.editPost}>Edit Post</div>

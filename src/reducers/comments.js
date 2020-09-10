@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENTS, ADD_COMMENT, UPDATE_COMMENT } from '../actions/comments'
+import { RECEIVE_COMMENTS, ADD_COMMENT, UPDATE_COMMENT, UPVOTE_COMMENT, DOWNVOTE_COMMENT, DELETE_COMMENT } from '../actions/comments'
 
 export default function comments (state = {}, action) {
   switch (action.type) {
@@ -24,6 +24,30 @@ export default function comments (state = {}, action) {
           author,
           body,
           timestamp
+        }
+      }
+    case UPVOTE_COMMENT :
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          voteScore: state[action.id].voteScore + 1
+        }
+      }
+    case DOWNVOTE_COMMENT :
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          voteScore: state[action.id].voteScore - 1
+        }
+      }
+    case DELETE_COMMENT :
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          deleted: true
         }
       }
     default :
