@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, INCREMENT_COUNTER, ADD_POST, UPDATE_POST } from '../actions/posts'
+import { RECEIVE_POSTS, INCREMENT_COUNTER, ADD_POST, UPDATE_POST, UPVOTE_POST, DOWNVOTE_POST } from '../actions/posts'
 
 export default function posts (state = {}, action) {
   switch (action.type) {
@@ -35,6 +35,22 @@ export default function posts (state = {}, action) {
           title,
           body,
           timestamp
+        }
+      }
+    case UPVOTE_POST :
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          voteScore: state[action.id].voteScore + 1
+        }
+      }
+    case DOWNVOTE_POST :
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          voteScore: state[action.id].voteScore - 1
         }
       }
     default :

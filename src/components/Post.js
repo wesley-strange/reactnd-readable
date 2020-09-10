@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleUpdatePost } from '../actions/posts'
+import { handleUpdatePost, handleVote } from '../actions/posts'
 import '../styles/Post.css';
 
 class Post extends Component {
@@ -12,12 +12,6 @@ class Post extends Component {
     edit: false
   }
 
-  handleOnClick = (e) => {
-    this.setState((prevState) => ({
-      edit: !prevState.edit
-    }))
-  }
-
   handleChange = (e) => {
     const value = e.target.value
     const name = e.target.name
@@ -25,6 +19,20 @@ class Post extends Component {
     this.setState(() => ({
       [name]: value
     }))
+  }
+
+  editPost = () => {
+    this.setState((prevState) => ({
+      edit: !prevState.edit
+    }))
+  }
+
+  vote = (e) => {
+    const { dispatch, post } = this.props
+    const name = e.target.getAttribute('name')
+    console.log(name)
+
+    dispatch(handleVote(post.id, name))
   }
 
   handleSubmit = (e) => {
@@ -107,16 +115,15 @@ class Post extends Component {
               <div className='post-author'>AUTHOR: {post.author}</div>
               <div className='post-timestamp'>TIME: {post.timestamp}</div>
               <div class="vote post-circle">
-                <div class="increment up"></div>
-                <div class="increment down"></div>
-
-                <div class="count">{post.voteScore}</div>
+                <div name="upVote" className="increment up" onClick={this.vote}></div>
+                <div name="downVote" className="increment down" onClick={this.vote}></div>
+                <div className="count">{post.voteScore}</div>
               </div>
               <div className='post-title'>TITLE: {post.title}</div>
               <div className='post-body'>BODY: {post.body}</div>
               <div className='post-comments'>{post.commentCount} comments</div>
               <div className='post-details link'>View Details</div>
-              <div className='post-edit link' onClick={this.handleOnClick}>Edit Post</div>
+              <div className='post-edit link' onClick={this.editPost}>Edit Post</div>
               <div className='post-delete link'>Delete Post</div>
             </div>
           )
