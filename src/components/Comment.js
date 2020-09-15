@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleUpdateComment, handleCommentVote, handleDeleteComment } from '../actions/comments'
+import { formatDate } from '../utils/helpers'
 import '../styles/Comment.css';
 
 class Comment extends Component {
@@ -95,8 +96,8 @@ class Comment extends Component {
             )
             : (
               <div key={comment.id} className='comment'>
-                <div className='comment-author'>by {comment.author} on {comment.timestamp}</div>
-                <div class="vote-comment comment-circle">
+                <div className='comment-author'>by {comment.author} on {formatDate(comment.timestamp)}</div>
+                <div className="vote-comment comment-circle">
                   <div name="upVote" className="increment up-comment" onClick={this.vote}></div>
                   <div name="downVote" className="increment down-comment" onClick={this.vote}></div>
                   <div className="count-comment">{comment.voteScore}</div>

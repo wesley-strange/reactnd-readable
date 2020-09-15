@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Post from './Post'
 import NewComment from './NewComment'
@@ -11,7 +11,7 @@ class Details extends Component {
 
     return (
       <div className='details'>
-        <Post id={id} />
+        <Post id={id} showLink={false} />
         <NewComment pid={id} />
         <CommentList pid={id} />
       </div>

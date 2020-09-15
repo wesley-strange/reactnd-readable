@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../styles/Nav.css'
-import CategoryList from './CategoryList'
 
 class Nav extends Component {
   render() {

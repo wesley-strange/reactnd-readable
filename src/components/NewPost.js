@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom'
 import '../styles/NewPost.css';
 import { connect } from 'react-redux'
 import { handleNewPost } from '../actions/posts'
-import CategoryList from './CategoryList'
 
 class NewPost extends Component {
   state = {

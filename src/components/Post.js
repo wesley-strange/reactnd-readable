@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import { handleUpdatePost, handleVote, handleDeletePost } from '../actions/posts'
+import { formatDate } from '../utils/helpers'
 import '../styles/Post.css';
 
 class Post extends Component {
@@ -69,7 +70,7 @@ class Post extends Component {
     const { category, author, title, body, edit, toHome } = this.state
     const { post, showLink } = this.props
 
-    if (toHome === true) {
+    if (toHome === true && !showLink) {
       return <Redirect to='/' />
     }
 
@@ -129,7 +130,7 @@ class Post extends Component {
             <div className='post' key={post.id}>
               <div className='post-category'>{post.category}</div>
               <div className='post-author'>{post.author}</div>
-              <div className='post-timestamp'>{post.timestamp}</div>
+              <div className='post-timestamp'>{formatDate(post.timestamp)}</div>
               <div className="vote post-circle">
                 <div name="upVote" className="increment up" onClick={this.vote}></div>
                 <div name="downVote" className="increment down" onClick={this.vote}></div>
@@ -139,7 +140,7 @@ class Post extends Component {
               <div className='post-body'>{post.body}</div>
               <div className='post-comments'>{post.commentCount} comments</div>
               { showLink
-                ? <Link to={`/details/${post.id}`} className='post-details link'>View Details</Link>
+                ? <Link to={`/${post.category}/${post.id}`} className='post-details link'>View Details</Link>
                 : <p className='post-details-link'></p>
               }
 
