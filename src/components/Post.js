@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link, Redirect } from 'react-router-dom'
 import { handleUpdatePost, handleVote, handleDeletePost } from '../actions/posts'
 import '../styles/Post.css';
 
@@ -9,7 +10,8 @@ class Post extends Component {
     author: this.props.post ? this.props.post.author : '',
     title: this.props.post ? this.props.post.title : '',
     body: this.props.post ? this.props.post.body : '',
-    edit: false
+    edit: false,
+    toHome: false
   }
 
   handleChange = (e) => {
@@ -38,6 +40,11 @@ class Post extends Component {
     const { dispatch, post } = this.props
 
     dispatch(handleDeletePost(post.id))
+    .then(() => {
+      this.setState(() => ({
+        toHome: true
+      }))
+    })
   }
 
   handleSubmit = (e) => {
@@ -59,8 +66,12 @@ class Post extends Component {
   }
 
   render () {
-    const { category, author, title, body, edit } = this.state
-    const { post } = this.props
+    const { category, author, title, body, edit, toHome } = this.state
+    const { post, showLink } = this.props
+
+    if (toHome === true) {
+      return <Redirect to='/' />
+    }
 
     return (
       post
@@ -119,7 +130,7 @@ class Post extends Component {
               <div className='post-category'>{post.category}</div>
               <div className='post-author'>{post.author}</div>
               <div className='post-timestamp'>{post.timestamp}</div>
-              <div class="vote post-circle">
+              <div className="vote post-circle">
                 <div name="upVote" className="increment up" onClick={this.vote}></div>
                 <div name="downVote" className="increment down" onClick={this.vote}></div>
                 <div className="count">{post.voteScore}</div>
@@ -127,7 +138,11 @@ class Post extends Component {
               <div className='post-title'>{post.title}</div>
               <div className='post-body'>{post.body}</div>
               <div className='post-comments'>{post.commentCount} comments</div>
-              <div className='post-details link'>View Details</div>
+              { showLink
+                ? <Link to={`/details/${post.id}`} className='post-details link'>View Details</Link>
+                : <p className='post-details-link'></p>
+              }
+
               <div className='post-edit link' onClick={this.editPost}>Edit Post</div>
               <div className='post-delete link' onClick={this.deletePost}>Delete Post</div>
             </div>
@@ -140,9 +155,10 @@ class Post extends Component {
   }
 }
 
-function mapStateToProps ({posts}, {id}) {
+function mapStateToProps ({posts}, {id, showLink}) {
   return {
-    post: posts[id]
+    post: posts[id],
+    showLink
   }
 }
 

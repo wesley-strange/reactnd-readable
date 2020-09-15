@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import '../styles/NewPost.css';
 import { connect } from 'react-redux'
 import { handleNewPost } from '../actions/posts'
@@ -54,13 +55,12 @@ class NewPost extends Component {
   }
 
   render() {
-    const { title, body, author, category } = this.state
+    const { title, body, author, category, toHome } = this.state
     const { categories } = this.props
 
-    //redirect to Home after submitting new post
-    // if (toHome === true) {
-    //   return <Redirect to='/' />
-    // }
+    if (toHome === true) {
+      return <Redirect to='/' />
+    }
 
     return (
       <form className='new-post' onSubmit={this.handleSubmit}>
@@ -81,7 +81,7 @@ class NewPost extends Component {
           <select name='categories' id='categories' value={category} onChange={this.handleChange}>
             <option value="" disabled>Select...</option>
             {categories.map((cat) => (
-              <option value={cat.name}>{cat.name}</option>
+              <option key={cat.name} value={cat.name}>{cat.name}</option>
             ))}
           </select>
         </div>

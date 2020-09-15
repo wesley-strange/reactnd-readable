@@ -11,3 +11,12 @@
   grid-gap: 30px;
   background-color: var(--mint-cream-darker);
 }
+
+.nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav a:hover {
+  color: var(--burnt-sienna);
+}

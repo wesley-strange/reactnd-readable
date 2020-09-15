@@ -7,15 +7,24 @@ import '../styles/Details.css';
 
 class Details extends Component {
   render () {
-    console.log("hello")
+    const { id } = this.props
+
     return (
       <div className='details'>
-        <Post id="6ni6ok3ym7mf1p33lnez" />
-        <NewComment pid="6ni6ok3ym7mf1p33lnez" />
-        <CommentList pid="6ni6ok3ym7mf1p33lnez" />
+        <Post id={id} />
+        <NewComment pid={id} />
+        <CommentList pid={id} />
       </div>
     )
   }
 }
 
-export default connect()(Details)
+function mapStateToProps ({posts}, props) {
+  const { id } = props.match.params
+
+  return {
+    id
+  }
+}
+
+export default connect(mapStateToProps)(Details)

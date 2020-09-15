@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../styles/Nav.css'
 import CategoryList from './CategoryList'
@@ -8,15 +8,15 @@ class Nav extends Component {
   render() {
     return (
       <nav className='nav'>
-        <div>
+        <NavLink to='/' exact activeClassName='active'>
             Readable
-        </div>
-        <div>
+        </NavLink>
+        <NavLink to='/' exact activeClassName='active'>
             Home
-        </div>
-        <div>
+        </NavLink>
+        <NavLink  to='/newpost' exact activeClassName='active'>
             New Post
-        </div>
+        </NavLink>
       </nav>
     )
   }
