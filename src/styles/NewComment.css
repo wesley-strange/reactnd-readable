@@ -13,7 +13,7 @@
   background-color: var(--mint-cream);
 }
 
-.new-label {
+.new-comment-label {
   grid-area: alabel;
   margin: 0;
   padding: 3px;
@@ -21,18 +21,18 @@
   padding-left: 15px;
 }
 
-.new-author {
+.new-comment-author {
   grid-area: author;
   margin: 3px;
 }
 
-.new-body {
+.new-comment-body {
   grid-area: comment;
   margin: 5px 15px 5px 15px;
   resize: none;
 }
 
-.new-submit {
+.new-comment-submit {
   grid-area: submit;
   border-radius: 0 0 4px 4px;
   cursor: pointer;

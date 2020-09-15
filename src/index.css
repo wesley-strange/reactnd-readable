@@ -6,6 +6,7 @@
   --persian-green: #2A9D8F;
   --sandy-brown: #F4A261;
   --burnt-sienna: #E76F51;
+  align-items: center;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--charcoal);
+  align-items: center;
 }
 
 code {

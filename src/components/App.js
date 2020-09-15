@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import Details from './Details'
-import CreateEditPost from './CreateEditPost'
+import NewPost from './NewPost'
 import Nav from './Nav'
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <CreateEditPost />
+        <NewPost />
       </div>
     )
   }

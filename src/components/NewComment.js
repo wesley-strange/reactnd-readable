@@ -42,24 +42,24 @@ class NewComment extends Component {
 
     return (
       <form className='new-comment' onSubmit={this.handleSubmit}>
-        <p className='new-label'>Commenting as</p>
+        <p className='new-comment-label'>Commenting as</p>
         <input
           name='author'
           type='text'
-          className='new-author'
+          className='new-comment-author'
           placeholder='Enter username'
           value={author}
           onChange={this.handleChange}
         />
         <textarea
           name='body'
-          className='new-body'
+          className='new-comment-body'
           placeholder='Enter comment...'
           value={body}
           onChange={this.handleChange}
         ></textarea>
         <button
-          className="new-submit"
+          className="new-comment-submit"
           type='submit'
           align="center"
         >
