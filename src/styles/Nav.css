@@ -1,0 +1,13 @@
+
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-weight: bold;
+  width: 100%;
+  text-decoration: none;
+  padding: 10px 0 10px 10px;
+  grid-gap: 30px;
+  background-color: var(--mint-cream-darker);
+}
