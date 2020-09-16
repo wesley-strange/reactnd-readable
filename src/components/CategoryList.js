@@ -8,6 +8,7 @@ class CategoryList extends Component {
 
     return (
       <select name='categories' id='categories'>
+        <option value="" disabled>Category...</option>
         {categories.map((category) => (
           <Category name={category.name} />
         ))}

@@ -20,8 +20,9 @@ class App extends Component {
           <Nav />
           <div>
             <Route path='/' exact component={Dashboard} />
+            <Route path='/:category' exact component={Dashboard} />
             <Route path='/:category/:id' exact component={Details} />
-            <Route path='/newpost' exact component={NewPost} />
+            <Route path='/post/post/new' exact component={NewPost} />
           </div>
         </div>
       </Router>

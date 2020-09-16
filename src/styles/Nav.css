@@ -1,15 +1,38 @@
 
-
 .nav {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 40px;
+  width: 100%;
+  font-weight: bold;
+  background-color: var(--mint-cream-darker);
+  align-items: center;
+}
+
+.nav-left {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   font-weight: bold;
   width: 100%;
   text-decoration: none;
-  padding: 10px 0 10px 10px;
   grid-gap: 30px;
-  background-color: var(--mint-cream-darker);
+  padding-left: 10px;
+}
+
+.nav-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: bold;
+  width: 100%;
+  text-decoration: none;
+  grid-gap: 10px;
+  padding-right: 10px;
+}
+
+.pad {
+  margin-right: 10px;
 }
 
 .nav a {

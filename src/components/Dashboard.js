@@ -17,6 +17,8 @@ class Dashboard extends Component {
   }
 
   render () {
+    const { category } = this.props
+
     return (
       <div className='dashboard'>
         <div className='sortby'>
@@ -31,10 +33,18 @@ class Dashboard extends Component {
             <option value='Score'>Score</option>
           </select>
         </div>
-        <PostList sortBy={this.state.sortBy} />
+        <PostList sortBy={this.state.sortBy} category={this.props.category}/>
       </div>
     )
   }
 }
 
-export default connect()(Dashboard)
+function mapStateToProps ({posts}, props) {
+  const { category } = props.match.params
+
+  return {
+    category
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard)
