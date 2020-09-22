@@ -19,7 +19,11 @@ export function handleLoadComments (id) {
     return Promise.all([
       ReadableAPI.getCommentsId(id)
     ]).then((comments) => {
-      dispatch(receiveComments(comments))
+      const commentsObj = {};
+      comments[0].forEach(comment => {
+        commentsObj[comment.id] = comment;
+      })
+      dispatch(receiveComments(commentsObj))
     })
   }
 }

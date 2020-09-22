@@ -37,6 +37,9 @@ class Comment extends Component {
     const { dispatch, comment } = this.props
 
     dispatch(handleDeleteComment(comment.id))
+
+    //reloading webpage to update the comment count on the post
+    window.location.reload();
   }
 
   handleSubmit = (e) => {

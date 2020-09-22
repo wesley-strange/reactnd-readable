@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import '../styles/App.css';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
@@ -7,6 +7,7 @@ import Dashboard from './Dashboard'
 import Details from './Details'
 import NewPost from './NewPost'
 import Nav from './Nav'
+import NoMatchPage from './NoMatch'
 
 class App extends Component {
   componentDidMount() {
@@ -19,10 +20,13 @@ class App extends Component {
         <div className='App'>
           <Nav />
           <div>
-            <Route path='/' exact component={Dashboard} />
-            <Route path='/:category' exact component={Dashboard} />
-            <Route path='/:category/:id' exact component={Details} />
-            <Route path='/post/post/new' exact component={NewPost} />
+            <Switch>
+              <Route path='/' exact component={Dashboard} />
+              <Route path='/:category' exact component={Dashboard} />
+              <Route path='/:category/:id' exact component={Details} />
+              <Route path='/post/post/new' exact component={NewPost} />
+              <Route component={NoMatchPage} />
+            </Switch>
           </div>
         </div>
       </Router>

@@ -38,7 +38,7 @@ class Post extends Component {
   }
 
   deletePost = () => {
-    const { dispatch, post } = this.props
+    const { dispatch, post, showLink } = this.props
 
     dispatch(handleDeletePost(post.id))
     .then(() => {
@@ -46,6 +46,12 @@ class Post extends Component {
         toHome: true
       }))
     })
+
+    //reloading webpage to update the post list on the dashboard page
+    //doesn't reload if it is on the post details page since it is redirected
+    if(showLink) {
+      window.location.reload();
+    }
   }
 
   handleSubmit = (e) => {

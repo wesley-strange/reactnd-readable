@@ -7,9 +7,9 @@ export function handleInitialData () {
   return (dispatch) => {
     return Promise.all([
       ReadableAPI.getCategories(),
-      ReadableAPI.getPosts(),
-      ReadableAPI.getComments()
-    ]).then(([ categories, posts, comments ]) => {
+      ReadableAPI.getPosts()
+      // ReadableAPI.getComments()
+    ]).then(([ categories, posts ]) => {
       const categoriesObj = {};
       categories.forEach(cat => {
         categoriesObj[cat.name] = cat;
@@ -22,11 +22,11 @@ export function handleInitialData () {
       })
       dispatch(receivePosts(postsObj))
 
-      const commentsObj = {};
-      comments.forEach(comment => {
-        commentsObj[comment.id] = comment;
-      })
-      dispatch(receiveComments(commentsObj))
+      // const commentsObj = {};
+      // comments.forEach(comment => {
+      //   commentsObj[comment.id] = comment;
+      // })
+      // dispatch(receiveComments(commentsObj))
     })
   }
 }
