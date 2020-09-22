@@ -33,7 +33,7 @@ class Dashboard extends Component {
             <option value='Score'>Score</option>
           </select>
         </div>
-        <PostList sortBy={this.state.sortBy} category={this.props.category}/>
+        <PostList sortBy={this.state.sortBy} category={category}/>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import * as ReadableAPI from '../utils/ReadableAPI'
 import { receiveCategories } from '../actions/categories'
 import { receivePosts, incrementCounter } from '../actions/posts'
-import { receiveComments, addComment } from '../actions/comments'
+import { addComment } from '../actions/comments'
 
 export function handleInitialData () {
   return (dispatch) => {
